@@ -1,51 +1,80 @@
-// Initial Loader
-window.onload = () => {
-    setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-        document.getElementById('main-content').classList.remove('hidden');
-    }, 3000);
-};
-
-// Love Meter Logic
-function startLoading() {
-    const name = document.getElementById('herName').value;
-    if (!name) return alert("Please enter your name first!");
-
-    document.getElementById('calcBtn').style.display = 'none';
-    document.getElementById('meter-container').classList.remove('hidden');
-
-    const fill = document.getElementById('fill');
-    const percentText = document.getElementById('percentText');
-    const target = Math.floor(Math.random() * (95 - 90 + 1)) + 90; // Rigged 90-95
-    
-    let count = 0;
-    const interval = setInterval(() => {
-        count++;
-        fill.style.width = count + "%";
-        percentText.innerText = count + "%";
-        if (count >= target) {
-            clearInterval(interval);
-            setTimeout(showProposal, 1000);
-        }
-    }, 30);
+:root {
+    --primary: #ff4d6d;
+    --secondary: #ff8fa3;
+    --bg: #fff0f3;
+    --glass: rgba(255, 255, 255, 0.9);
 }
 
-function showProposal() {
-    document.getElementById('proposal').classList.remove('hidden');
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Prevents scrollbars when button moves */
 }
 
-// The Runaway Button
-const noBtn = document.getElementById('noBtn');
-noBtn.addEventListener('mouseover', () => {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    noBtn.style.left = x + 'px';
-    noBtn.style.top = y + 'px';
-});
+.container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    z-index: 10;
+}
 
-// The Success
-document.getElementById('yesBtn').addEventListener('click', () => {
-    document.getElementById('main-content').innerHTML = ""; 
-    document.getElementById('successScreen').classList.remove('hidden');
-    document.body.style.backgroundColor = "#ffccd5";
-});
+.card {
+    background: var(--glass);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+    border: 1px solid white;
+    margin-bottom: 20px;
+}
+
+.hidden { display: none !important; }
+
+/* The Love Meter */
+.progress-bar {
+    height: 25px;
+    background: #eee;
+    border-radius: 15px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    transition: width 0.1s linear;
+}
+
+/* The Proposal Section */
+.btn-group {
+    margin-top: 30px;
+    height: 60px; /* Fixed height for the buttons area */
+    position: relative;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+#yesBtn { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); }
+#noBtn { background: #555; color: white; position: absolute; left: 60%; }
+
+/* Final Screen Image */
+#successScreen img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
