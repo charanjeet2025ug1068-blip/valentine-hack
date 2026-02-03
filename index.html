@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal.exe | Love Debugger</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="loader">
+        <div class="heart"></div>
+        <p>Initializing Romantic Protocols...</p>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <header>
+            <h1>My Profile <span class="blink">|</span></h1>
+        </header>
+
+        <section class="card">
+            <h3>Skills & Personality</h3>
+            <div class="skills">
+                <span>Problem Solver</span>
+                <span>Coffee Enthusiast</span>
+                <span>Clean Coder</span>
+                <span>Always Online</span>
+            </div>
+            <p class="bio">Expert in fixing bugs and (hopefully) winning hearts.</p>
+        </section>
+
+        <section class="card love-section">
+            <h3>Love Compatibility Calculator</h3>
+            <div class="input-group">
+                <input type="text" id="herName" placeholder="Enter Your Name">
+                <span class="plus">+</span>
+                <input type="text" value="[YOUR NAME]" readonly>
+            </div>
+            <button id="calcBtn" onclick="startLoading()">Calculate Compatibility</button>
+            
+            <div id="meter-container" class="hidden">
+                <div class="progress-bar">
+                    <div id="fill" class="fill"></div>
+                </div>
+                <h2 id="percentText">0%</h2>
+            </div>
+        </section>
+
+        <div id="proposal" class="hidden">
+            <h2 class="fancy">Will you be my Valentine?</h2>
+            <div class="btn-group">
+                <button id="yesBtn">YES! ❤️</button>
+                <button id="noBtn">No 💔</button>
+            </div>
+        </div>
+
+        <div id="successScreen" class="hidden">
+            <div class="bouquet-icon">💐</div>
+            <h1 class="fancy">I knew you'd click Yes!</h1>
+            <p>Ready for our first deployment together? 💘</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
